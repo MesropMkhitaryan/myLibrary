@@ -19,13 +19,15 @@
 
 
 please add new author
-<form action="/author/edit" method="post">
+<form action="/author/edit" method="post" enctype="multipart/form-data">
     <input type="hidden" name="authorId" value="<%=author.getId()%>"><br>
     <input type="text" name = "name" value="<%=author.getName()%>"><br>
     <input type="text" name = "surname" value="<%=author.getSurname()%>"><br>
     <input type="email" name = "email" value="<%=author.getEmail()%>"><br>
     <input type="number" name="age" value="<%=author.getAge()%>">
     <br>
+    author picture:
+    <input type="file" name="authorPic">
     <input type="submit" value="Update"/>
 
 </form>

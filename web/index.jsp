@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.User" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 04.09.2022
@@ -7,14 +7,29 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>My Library</title>
-  </head>
-  <body>
-  <a href="/authors">Show all authors</a>
-  <a href="/authors/add">add author</a>
-  <a href="/books">Show all books</a>
-  <a href="/books/add">add books</a>
+</head>
+<%
 
-  </body>
+    User user = (User) session.getAttribute("user");
+
+
+%>
+<body>
+
+<% if (user != null) {%>
+<a href="/authors/add">add author</a>
+<a href="/books/add">add books</a>
+<a href="/logout">Logout</a>
+
+<%} else {%>
+<a href="/users/add">Register</a>
+<a href="/login">Login</a>
+<%}%>
+<a href="/authors">Show all authors</a>
+<a href="/books">Show all books</a>
+
+
+</body>
 </html>

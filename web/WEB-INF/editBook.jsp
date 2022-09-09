@@ -22,7 +22,7 @@
 
 Please update book
 
-<form action="/books/edit" method="post">
+<form action="/books/edit" method="post"  enctype="multipart/form-data">
     <input type="hidden" name="bookId" value="<%=book.getId()%>"><br>
     <input type="text" name = "title" value="<%=book.getTitle()%>"><br>
     <input type="text" name = "description" value="<%=book.getDescription()%>"><br>
@@ -37,6 +37,8 @@ Please update book
     <option value="<%=author.getId()%>"><%= author.getName()%>
        <% }} %>
 </select>
+    <br>
+    <input type="file" name="booksPic"/>
     <br>
     <input type="submit" value="Update"/>
 

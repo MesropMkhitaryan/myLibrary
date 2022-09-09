@@ -14,4 +14,5 @@ public class Author {
     private String surname;
     private String email;
     private int age;
+    private String authorPic;
 }

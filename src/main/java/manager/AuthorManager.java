@@ -12,13 +12,14 @@ import java.util.List;
 public class AuthorManager {
     private Connection connection = DBConnectionProvider.getINSTANCE().getConnection();
     public void add(Author author) {
-        String sql = "insert into author(name,surname,email,age) VALUES (?,?,?,?)";
+        String sql = "insert into author(name,surname,email,age,author_pic) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getName());
             ps.setString(2, author.getSurname());
             ps.setString(3, author.getEmail());
             ps.setInt(4, author.getAge());
+            ps.setString(5, author.getAuthorPic());
 
 
             ps.executeUpdate();
@@ -69,6 +70,7 @@ public class AuthorManager {
         author.setSurname(resultSet.getString(3));
         author.setEmail(resultSet.getString(4));
         author.setAge(resultSet.getInt(5));
+        author.setAuthorPic(resultSet.getString(6));
 
         return author;
     }
@@ -85,14 +87,16 @@ public class AuthorManager {
 
     }
     public void edit(Author author) {
-        String sql = "update author set name = ?,surname = ?,email = ?,age = ? where id = ?";
+        String sql = "update author set name = ?,surname = ?,email = ?,age = ?,author_pic = ? where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getName());
             ps.setString(2, author.getSurname());
             ps.setString(3, author.getEmail());
             ps.setInt(4, author.getAge());
-            ps.setInt(5, author.getId());
+            ps.setString(5, author.getAuthorPic());
+
+            ps.setInt(6, author.getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {

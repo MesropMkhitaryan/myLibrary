@@ -21,7 +21,8 @@
 
 Please add books
 
-<form action="/books/add" method="post">
+<form action="/books/add" method="post" enctype="multipart/form-data">
+
     <input type="text" name = "title" placeholder="Input title"><br>
     <input type="text" name = "description" placeholder="Input description"><br>
     <input type="number" name = "price" placeholder="Input price"><br>
@@ -32,7 +33,10 @@ Please add books
        <% } %>
 </select>
     <br>
-    <input type="submit" value="Register"/>
+    <input type="file" name="booksPic"/>
+    <br>
+
+    <input type="submit" value="add"/>
 
 </form>
 

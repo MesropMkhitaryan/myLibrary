@@ -1,31 +1,34 @@
 <%--
   Created by IntelliJ IDEA.
   User: user
-  Date: 04.09.2022
-  Time: 13:55
+  Date: 08.09.2022
+  Time: 16:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add Author</title>
+    <title>Register</title>
 </head>
 <body>
 
-please add new author
+<%
+    String msg = (String) request.getAttribute("msg");
 
+%>
 
-<form action="/authors/add" method="post" enctype="multipart/form-data">
+<%  if (msg != null) { %>
+
+<p style="color: red"><%= msg%> </p>
+<%}%>
+
+<form action="/users/add" method="post" >
     <input type="text" name = "name" placeholder="Input name"><br>
     <input type="text" name = "surname" placeholder="Input surname"><br>
     <input type="email" name = "email" placeholder="Input email"><br>
-    <input type="number" name="age" placeholder="input age">
-    <br>
-
-    author picture:
-    <input type="file" name="authorPic">
-    <input type="submit" value="add"/>
-
+    <input type="password" name = "password" placeholder="Input password"><br>
+    <input type="submit" value="register"/>
 </form>
+
 </body>
 </html>
